@@ -333,4 +333,32 @@ class Registration extends HttpClient
 
         return $data;
     }
+    
+    /**
+     * Get Reseller Price for domains
+     * Product type for domains. Permitted values are:
+     * 10 Domain registration
+     * 13 DNS hosting
+     * 14 DNS hosting renew
+     * 16 Domain renewal
+     * 17 Domain redemption grace period (RGP)
+     * 18 Domain Extended 63 RGP (available at our discretion, and decided by us on a name-by-name basis)
+     * 19 transfer
+     * 41 Registration and email for- warding by the .name Registry
+     * 44 .name registration and email forwarding renewal
+     *
+     * @param int [$productype] Product type
+     *
+     * @return \SimpleXMLElement Account Information
+     */
+    public function getDomainResellerPrice($productype = 10, $tld = 'com', $years = 1)
+    {
+        $this->payload["ProductType"] = $productype;
+        $this->payload["tld"] = $tld;
+        $this->payload["Years"] = $years;
+        $command = 'PE_GetResellerPrice';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 }
