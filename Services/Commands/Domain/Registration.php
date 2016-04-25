@@ -282,4 +282,55 @@ class Registration extends HttpClient
 
         return $data;
     }
+    
+    /**
+     * Generate variations of a domain name that you specify, for .com, .net, .tv, and .cc TLDs.
+     *
+     * @param string $sld Second-level domain name
+     * @param string [$tld] Top-level domain name (Default: 'com')
+     * @param array [$tldlist] List of top-level domains
+     * @param boolean [$sensitivecontent] Block potentially offensive content. (Default: false)
+     * @param int [$maxResults] Maximum number of suggested names to return in addition to your input.
+     * @param int [$max] Maximum length of SLD to return.
+     * @param boolean [$hyphens] Return domain names that include hyphens. (Default: false)
+     * @param boolean [$numbers] Return domains that include numbers. (Default: true)
+     * @param string [$basic] Higher values return suggestions that are built by addeding prefixes, suffices and words to sld. (Off, Low, Medium, High) (Default: medium)
+     * @param string [$related] Higher vlues return domain names by interpreting the input semnatically and construct suggestions with similar meaning. (Off, Low, Medium, High) (Default: high)
+     * @param string [$similar] Higher values return suggestions that are similar to customer's input but not necessarily in meaning. (Off, Low, Medium, High) (Default: medium)
+     * @param string [$topical] Higher values return suggestions that reflect current topics and popular words. (Off, Low, Medium, High) (Default: high)
+     * @return \SimpleXMLElement
+     */
+    public function nameSpinner(
+        $sld,
+        $tld = 'com',
+        $tldlist = [],
+        $sensitivecontent = false,
+        $maxResults = 20,
+        $max = 64,
+        $hyphens = false,
+        $numbers = true,
+        $basic = 'medium',
+        $related = 'high',
+        $similar = 'medium',
+        $topical = 'medium'
+    ) {
+        $this->payload["sld"] = $sld;
+        $this->payload["tld"] = $tld;
+        $this->payload["tldlist"] = implode(',', $tldlist);
+        $this->payload["sensitivecontent"] = $sensitivecontent;
+        $this->payload["MaxResults"] = $maxResults;
+        $this->payload["maxlength"] = $max;
+        $this->payload["usehyphens"] = $hyphens;
+        $this->payload["usenumbers"] = $numbers;
+        $this->payload["basic"] = $basic;
+        $this->payload["related"] = $related;
+        $this->payload["similar"] = $similar;
+        $this->payload["topical"] = $topical;
+
+
+        $command = 'NameSpinner';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 }
