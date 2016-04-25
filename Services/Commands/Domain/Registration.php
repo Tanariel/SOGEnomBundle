@@ -243,4 +243,25 @@ class Registration extends HttpClient
 
         return $data;
     }
+    
+    /**
+     * Delete a domain name registration.
+     * (require special agreement with enom)
+     *
+     * @param string $sld Second-level domain name.
+     * @param string $tld Top-level domain name.
+     * @param string $ip End User's IP address. (###.###.###.###)
+     * @return \SimpleXMLElement
+     */
+    public function deleteRegistration($sld, $tld, $ip)
+    {
+        $this->payload["sld"] = $sld;
+        $this->payload["tld"] = $tld;
+        $this->payload["EndUserIP"] = $ip;
+
+        $command = 'deleteregistration';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 }
