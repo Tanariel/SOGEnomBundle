@@ -264,4 +264,22 @@ class Registration extends HttpClient
 
         return $data;
     }
+    
+    /**
+     * Retrieve the up-to-date Registration Agreement.
+     *
+     * @param string $page Which agreement to retrieve. (See: http://www.enom.com/APICommandCatalog/API%20topics/api_GetAgreementPage.htm)
+     * @param string $language Language of agreement. [Eng, English, Ger, German, Por, Portuguese, Spa, Spanish] (Default is English)
+     * @return \SimpleXMLElement
+     */
+    public function getAgreementPage($page = 'agreement', $language = 'English')
+    {
+        $this->payload["page"] = $page;
+        $this->payload["language"] = $language;
+
+        $command = 'GetAgreementPage';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 }
