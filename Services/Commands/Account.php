@@ -88,4 +88,17 @@ class Account extends HttpClient
 
         return $data->OrderList;
     }
+    
+    /**
+     * Get Account Balance
+     *
+     * @return \SimpleXMLElement Account Information
+     */
+    public function getBalance()
+    {
+        $command = 'GetBalance';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 }
