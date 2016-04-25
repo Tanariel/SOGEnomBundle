@@ -44,6 +44,33 @@ class Registration extends HttpClient
 
         return $data;
     }
+    
+    /**
+     * Check the avilability of multiple domain names.
+     * Provide a list of domains or a single domain with list of tld.
+     *
+     * @param string|array $list A string of a single second-level domain or an array of multiple full domains.
+     * @param array [$tlds] An array of Top-level domains (if $list isn't an array)
+     * @return |SimpleXMLElement
+     */
+    public function batchCheck($slds, $tlds = false)
+    {
+        if (is_array($slds) && is_array($tlds)) {
+            throw new \InvalidArgumentException("DomainList and Tld list is not allowed in the same request");
+        }
+
+        if (is_array($slds)) {
+            $this->payload["DomainList"] = implode(',', $slds);
+        } elseif (is_array($tlds)) {
+            $this->payload["SLD"] = $slds;
+            $this->payload["TLDList"] = implode(',', $tlds);
+        }
+
+        $command = 'Check';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 
     /**
      * Retrieve the settings for email confirmations of orders
