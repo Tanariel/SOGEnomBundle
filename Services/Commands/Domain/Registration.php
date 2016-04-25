@@ -192,4 +192,19 @@ class Registration extends HttpClient
 
         return $data;
     }
+    
+    /**
+     * Retrieve a list of language codes currently supported for a TLD.
+     *
+     * @return \SimpleXMLElement
+     */
+    public function getIDNCodes($tld)
+    {
+        $this->payload["tld"] = $tld;
+
+        $command = 'GetIDNCodes';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 }
