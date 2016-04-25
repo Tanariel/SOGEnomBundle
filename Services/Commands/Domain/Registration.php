@@ -71,6 +71,44 @@ class Registration extends HttpClient
 
         return $data;
     }
+    
+    /**
+     * Generate variations of a domain name based on a search term.
+     *
+     * @param string $search Term to use to generate suggestions.
+     * @param int $maxResults
+     * @param int $spinType
+     * @param array $includeTlds
+     * @param array $onlyTlds
+     * @param array $excludeTlds
+     * @param bool $adult
+     * @param bool $premium
+     * @return \SimpleXMLElement
+     * @throws \SOG\EnomBundle\Services\EnomException
+     */
+    public function getNameSuggestions($search, $maxResults = 50, $spinType = 0, $includeTlds = [], $onlyTlds = [], $excludeTlds = [], $adult = false, $premium = true)
+    {
+        $this->payload["SearchTerm"] = $search;
+        $this->payload["Adult"] = $adult ? 'True' : 'False';
+        $this->payload["Premium"] = $premium ? 'True' : 'False';
+        $this->payload["MaxResults"] = $maxResults;
+        $this->payload["SpinType"] = $spinType;
+        
+        if (!empty($includeTlds)) {
+            $this->payload['TldList'] = implode(',', $includeTlds);
+        }
+        if (!empty($onlyTlds)) {
+            $this->payload['OnlyTldList'] = implode(',', $onlyTlds);
+        }
+        if (!empty($excludeTlds)) {
+            $this->payload['ExcludeTldList'] = implode(',', $excludeTlds);
+        }
+        
+        $command = 'GetNameSuggestions';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 
     /**
      * Retrieve the settings for email confirmations of orders
