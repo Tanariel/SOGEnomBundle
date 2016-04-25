@@ -207,4 +207,40 @@ class Registration extends HttpClient
 
         return $data;
     }
+    
+    /**
+     * Check a trademark claim for a domain name from Trademark Clearinghouse (TMCH).
+     *
+     * @param string $sld Secondary-level domain name
+     * @param string $tld Top-level domain name
+     * @return \SimpleXMLElement
+     */
+    public function tmCheck($sld, $tld)
+    {
+        $this->payload["sld"] = $sld;
+        $this->payload["tld"] = $tld;
+
+        $command = 'TM_Check';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
+    
+    /**
+     * Retrieve an itemized list of Trademark Clearinghouse (TMCH) Claims for an SLD using a Lookup Key.
+     *
+     * @param string sld Second-level domain name
+     * @param string $lookupKey A unique Lookup Key for a domain. Use the TM_Check command to retrieve the value.
+     * @return \SimpleXMLElement
+     */
+    public function tmGetNotice($sld, $lookupKey)
+    {
+        $this->payload["sld"] = $sld;
+        $this->payload["lookupKey"] = $lookupKey;
+
+        $command = 'TM_GetNotice';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 }
