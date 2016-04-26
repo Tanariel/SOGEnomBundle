@@ -73,6 +73,35 @@ class Registration extends HttpClient
     }
     
     /**
+     * Retrieve TLD characteristics in detail for a specified TLD.
+     *
+     * @param string $tld Top-level domain
+     * @return \SimpleXMLElement
+     */
+    public function getTLDDetails($tld)
+    {
+        $this->payload["tld"] = $tld;
+
+        $command = 'GetTLDDetails';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data->tlds;
+    }
+    
+    /**
+     * Retrieve the settings for email confirmations of orders
+     *
+     * @return SimpleXMLElement
+     */
+    public function getConfirmationSettings()
+    {
+        $command = 'GetConfirmationSettings';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data->ConfirmationSettings;
+    }
+    
+    /**
      * Generate variations of a domain name based on a search term.
      *
      * @param string $search Term to use to generate suggestions.
@@ -107,20 +136,7 @@ class Registration extends HttpClient
         $command = 'GetNameSuggestions';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data;
-    }
-
-    /**
-     * Retrieve the settings for email confirmations of orders
-     *
-     * @return SimpleXMLElement
-     */
-    public function getConfirmationSettings()
-    {
-        $command = 'GetConfirmationSettings';
-        $data = $this->makeRequest($command, $this->payload);
-
-        return $data->ConfirmationSettings;
+        return $data->DomainSuggestions;
     }
 
     /**
@@ -205,7 +221,7 @@ class Registration extends HttpClient
         $command = 'GetIDNCodes';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $data->tlds;
     }
     
     /**
@@ -223,7 +239,7 @@ class Registration extends HttpClient
         $command = 'TM_Check';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $data->TM_Check;
     }
     
     /**
@@ -272,7 +288,7 @@ class Registration extends HttpClient
      * @param string $language Language of agreement. [Eng, English, Ger, German, Por, Portuguese, Spa, Spanish] (Default is English)
      * @return \SimpleXMLElement
      */
-    public function getAgreementPage($page = 'agreement', $language = 'English')
+    public function getAgreementPage($page = 'agreement', $language = 'Eng')
     {
         $this->payload["page"] = $page;
         $this->payload["language"] = $language;
@@ -280,7 +296,7 @@ class Registration extends HttpClient
         $command = 'GetAgreementPage';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $data->content;
     }
     
     /**
@@ -331,7 +347,7 @@ class Registration extends HttpClient
         $command = 'NameSpinner';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $data->namespin;
     }
     
     /**
@@ -359,7 +375,37 @@ class Registration extends HttpClient
         $command = 'PE_GetResellerPrice';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $data->productprice;
+    }
+    
+    /**
+     * Get Retail Price for domains
+     * Permitted values are:
+     * 10 Domain registration
+     * 13 DNS hosting
+     * 14 DNS hosting renew
+     * 16 Domain renewal
+     * 17 Domain redemption grace period (RGP)
+     * 18 Domain Extended 63 RGP (available at our discretion, and decided by us on a name-by-name basis)
+     * 19 transfer
+     * 41 Registration and email for- warding by the .name Registry
+     * 44 .name registration and email forwarding renewal
+     *
+     * @param int [$productype] Product type
+     * @param string [$productype] tld
+     * @param int [$years] Retrieve quantity discount information. For some products like domains, this value represents the price break for multi-year registrations.
+     *
+     * @return \SimpleXMLElement Account Information
+     */
+    public function getDomainRetailPrice($productype = 10, $tld = 'com', $years = 1)
+    {
+        $this->payload["ProductType"] = $productype;
+        $this->payload["tld"] = $tld;
+        $this->payload["Years"] = $years;
+        $command = 'PE_GetRetailPrice';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data->productprice;
     }
     
     /**
