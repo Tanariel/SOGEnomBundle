@@ -89,19 +89,6 @@ class Registration extends HttpClient
     }
     
     /**
-     * Retrieve the settings for email confirmations of orders
-     *
-     * @return \SimpleXMLElement
-     */
-    public function getConfirmationSettings()
-    {
-        $command = 'GetConfirmationSettings';
-        $data = $this->makeRequest($command, $this->payload);
-
-        return $data->ConfirmationSettings;
-    }
-    
-    /**
      * Generate variations of a domain name based on a search term.
      *
      * @param string $search Term to use to generate suggestions.
