@@ -36,19 +36,6 @@ class Account extends HttpClient
     }
 
     /**
-     * Get TLD list
-     *
-     * @return SimpleXMLElement
-     */
-    public function getTldList()
-    {
-        $command = 'GetTLDList';
-        $data = $this->makeRequest($command, $this->payload);
-
-        return $data->tldlist;
-    }
-
-    /**
      * Retrieve the customer service contact information for a domain name account.
      *
      * @return SimpleXMLElement
