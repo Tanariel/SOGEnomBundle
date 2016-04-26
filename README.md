@@ -24,24 +24,17 @@ SOGEnomBundle is licensed under the MIT License - see the `Resources/meta/LICENS
 
 
 ## Setup
-**Using Submodule**
+**Using Composer**
 
-    git submodule add https://github.com/shaneog/SOGEnomBundle.git vendor/bundles/SOG/EnomBundle
-**Using the vendors script**
-
-      [SOGEnomBundle]
-          git=https://github.com/shaneog/SOGEnomBundle.git
-          target=bundles/SOG/EnomBundle
-**Add the SOG namespace to autoloader**
-
-``` php
-<?php
-   // app/autoload.php
-   $loader->registerNamespaces(array(
-    // ...
-    'SOG' => __DIR__.'/../vendor/bundles',
-  ));
-```
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Tanariel/SOGEnomBundle"
+        }
+    ],
+    "require": {
+        "sog/enom-bundle": "v1.0"
+    }
 **Add SOGEnomBundle to your application kernel**
 
 ``` php
@@ -67,9 +60,11 @@ sog_enom:
 ```
 ## Usage
 
-**Using service**
+**Use Examples**
 
 ``` php
 <?php
     $enom = $this->get('Enom');
+    $response = $this->enom->getAccount()->getBalance();
+    $response = $this->enom->getDomainRegistration()->nameSpinner('mysuperdomain.com');
 ```
