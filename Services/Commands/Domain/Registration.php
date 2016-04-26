@@ -26,7 +26,7 @@ class Registration extends HttpClient
      *
      * @param string $domain The domain name to check (e.g. example.com, NOT www.example.com)
      *
-     * @return SimpleXMLElement
+     * @return \SimpleXMLElement
      */
     public function check($domain)
     {
@@ -51,7 +51,7 @@ class Registration extends HttpClient
      *
      * @param string|array $list A string of a single second-level domain or an array of multiple full domains.
      * @param array [$tlds] An array of Top-level domains (if $list isn't an array)
-     * @return |SimpleXMLElement
+     * @return \SimpleXMLElement
      */
     public function batchCheck($slds, $tlds = false)
     {
@@ -91,7 +91,7 @@ class Registration extends HttpClient
     /**
      * Retrieve the settings for email confirmations of orders
      *
-     * @return SimpleXMLElement
+     * @return \SimpleXMLElement
      */
     public function getConfirmationSettings()
     {
@@ -144,7 +144,7 @@ class Registration extends HttpClient
      *
      * @param string $tld The Country Code Top Level Domain to check for extended attributes
      *
-     * @return SimpleXMLElement
+     * @return \SimpleXMLElement
      */
     public function getExtAttributes($tld)
     {
@@ -429,7 +429,7 @@ class Registration extends HttpClient
     /**
      * Get TLD list
      *
-     * @return SimpleXMLElement
+     * @return \SimpleXMLElement
      */
     public function getTldList()
     {
