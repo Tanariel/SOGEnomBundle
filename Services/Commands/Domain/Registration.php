@@ -154,7 +154,7 @@ class Registration extends HttpClient
      *
      * @param string $tld The Country Code Top Level Domain to check for extended attributes
      *
-     * @return SimpleXMLElement
+     * @return \SimpleXMLElement
      */
     public function purchase($domain, $numyears = 1, $autorenew = false, array $nameservers = null, $unlock = false, $password = null )
     {
@@ -262,7 +262,7 @@ class Registration extends HttpClient
         $this->payload["tld"] = $tld;
         $this->payload["EndUserIP"] = $ip;
 
-        $command = 'deleteregistration';
+        $command = 'DeleteRegistration';
         $data = $this->makeRequest($command, $this->payload);
 
         return $data;
