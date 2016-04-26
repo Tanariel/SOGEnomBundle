@@ -19,8 +19,17 @@ SOGEnomBundle is licensed under the MIT License - see the `Resources/meta/LICENS
 5. Check (domain registration)
 6. GetConfirmationSettings
 7. GetExtAttributes
-
-*more coming soon*
+8. GetBalance
+9. GetTLDDetails
+10. GetNameSuggestions
+11. GetIDNCodes
+12. TM_Check
+13. TM_GetNotice
+14. DeleteRegistration
+15. GetAgreementPage
+16. NameSpinner
+17. PE_GetResellerPrice
+18. PE_GetDomainPricing
 
 
 ## Setup
