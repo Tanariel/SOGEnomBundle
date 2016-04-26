@@ -1,5 +1,5 @@
 {
-    "name": "Tanariel/enom-bundle",
+    "name": "SOG/enom-bundle",
     "type": "symfony-bundle",
     "description": "enom bundle",
     "keywords": ["enom","api"],
