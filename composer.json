@@ -1,14 +1,18 @@
 {
-    "name": "sog/enom-bundle",
+    "name": "Tanariel/enom-bundle",
     "type": "symfony-bundle",
     "description": "enom bundle",
     "keywords": ["enom","api"],
-    "homepage": "https://github.com/shaneog",
+    "homepage": "https://github.com/Tanariel",
     "license": "MIT",
     "authors": [
         {
             "name": "Shane O'Grady",
             "email": "shane.ogrady@gmail.com"
+        },
+        {
+            "name": "Jean-Bernard Devaux",
+            "email": "ghotmog@gmail.com"
         }
     ],
     "require": {
