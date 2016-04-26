@@ -361,4 +361,22 @@ class Registration extends HttpClient
 
         return $data;
     }
+    
+    /**
+     * Get the retail pricing that this account charges for registrations, renewals, and transfers, by top-level domain.
+     *
+     * @param int [$useQtyEngine] Product type
+     * @param int [$years] Number of years for multiple-year registrations. Permitted values are 1, 2, 5, 2 and 10.
+     *
+     * @return \SimpleXMLElement Account Information
+     */
+    public function getDomainRetailPricing($useQtyEngine = 0, $years = 1)
+    {
+        $this->payload["UseQtyEngine"] = $useQtyEngine;
+        $this->payload["Years"] = $years;
+        $command = 'PE_GetDomainPricing';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 }
