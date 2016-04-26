@@ -425,4 +425,17 @@ class Registration extends HttpClient
 
         return $data;
     }
+    
+    /**
+     * Get TLD list
+     *
+     * @return SimpleXMLElement
+     */
+    public function getTldList()
+    {
+        $command = 'GetTLDList';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data->tldlist;
+    }
 }
