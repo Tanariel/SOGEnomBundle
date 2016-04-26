@@ -25,7 +25,7 @@ class Account extends HttpClient
     /**
      * Get Account Info
      *
-     * @return SimpleXMLElement Account Information
+     * @return \SimpleXMLElement Account Information
      */
     public function getAccountInfo()
     {
@@ -38,7 +38,7 @@ class Account extends HttpClient
     /**
      * Retrieve the customer service contact information for a domain name account.
      *
-     * @return SimpleXMLElement
+     * @return \SimpleXMLElement
      */
     public function getServiceContact()
     {
@@ -56,7 +56,7 @@ class Account extends HttpClient
      * @param string $begin MM/DD/YYYY Beginning date of orders to return
      * @param string $end   MM/DD/YYYY End date of orders to return
      *
-     * @return SimpleXMLElement
+     * @return \SimpleXMLElement
      */
     public function getOrderList($start = 1, $begin = null, $end = null)
     {
