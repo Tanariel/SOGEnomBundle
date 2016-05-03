@@ -425,4 +425,34 @@ class Registration extends HttpClient
 
         return $data->tldlist;
     }
+    
+    /**
+     * Get domain expiration date.
+     *
+     * @return \SimpleXMLElement
+     */
+    public function getDomainExpiry($sld, $tld)
+    {
+        $this->payload["sld"] = $sld;
+        $this->payload["tld"] = $tld;
+        $command = 'GetDomainExp';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
+
+    /**
+     * Get information about a single domain name.
+     *
+     * @return \SimpleXMLElement
+     */
+    public function getDomaininfo($sld, $tld)
+    {
+        $this->payload["sld"] = $sld;
+        $this->payload["tld"] = $tld;
+        $command = 'GetDomainInfo';
+        $data = $this->makeRequest($command, $this->payload);
+
+        return $data;
+    }
 }
