@@ -32,7 +32,7 @@ class Account extends HttpClient
         $command = 'GetAccountInfo';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->GetAccountInfo;
+        return $data;
     }
 
     /**
@@ -45,7 +45,7 @@ class Account extends HttpClient
         $command = 'GetServiceContact';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->ServiceContact;
+        return $data;
     }
 
     /**
@@ -73,7 +73,7 @@ class Account extends HttpClient
         $command = 'GetOrderList';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->OrderList;
+        return $data;
     }
     
     /**
@@ -99,6 +99,6 @@ class Account extends HttpClient
         $command = 'GetConfirmationSettings';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->ConfirmationSettings;
+        return $data;
     }
 }
