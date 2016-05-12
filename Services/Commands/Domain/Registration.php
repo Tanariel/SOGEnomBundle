@@ -85,7 +85,7 @@ class Registration extends HttpClient
         $command = 'GetTLDDetails';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->tlds;
+        return $data;
     }
     
     /**
@@ -123,7 +123,7 @@ class Registration extends HttpClient
         $command = 'GetNameSuggestions';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->DomainSuggestions;
+        return $data;
     }
 
     /**
@@ -146,7 +146,7 @@ class Registration extends HttpClient
         $command = 'GetExtAttributes';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->Attributes;
+        return $data;
     }
 
     /**
@@ -208,7 +208,7 @@ class Registration extends HttpClient
         $command = 'GetIDNCodes';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->tlds;
+        return $data;
     }
     
     /**
@@ -226,7 +226,7 @@ class Registration extends HttpClient
         $command = 'TM_Check';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->TM_Check;
+        return $data;
     }
     
     /**
@@ -283,7 +283,7 @@ class Registration extends HttpClient
         $command = 'GetAgreementPage';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->content;
+        return $data;
     }
     
     /**
@@ -334,7 +334,7 @@ class Registration extends HttpClient
         $command = 'NameSpinner';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->namespin;
+        return $data;
     }
     
     /**
@@ -362,7 +362,7 @@ class Registration extends HttpClient
         $command = 'PE_GetResellerPrice';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->productprice;
+        return $data;
     }
     
     /**
@@ -392,7 +392,7 @@ class Registration extends HttpClient
         $command = 'PE_GetRetailPrice';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->productprice;
+        return $data;
     }
     
     /**
@@ -423,7 +423,7 @@ class Registration extends HttpClient
         $command = 'GetTLDList';
         $data = $this->makeRequest($command, $this->payload);
 
-        return $data->tldlist;
+        return $data;
     }
     
     /**
