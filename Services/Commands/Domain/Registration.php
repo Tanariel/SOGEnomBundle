@@ -196,7 +196,7 @@ class Registration extends HttpClient
         }
 
         if ($premiumDomain) {
-            $this->payload["PremiumDomain"] = $premiumDomain;
+            $this->payload["PremiumDomain"] = 'Yes';
         }
 
         $command = 'Purchase';
