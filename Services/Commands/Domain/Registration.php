@@ -40,9 +40,9 @@ class Registration extends HttpClient
         $this->payload["tld"] = $pieces[1];
 
         $command = 'Check';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -67,9 +67,9 @@ class Registration extends HttpClient
         }
 
         $command = 'Check';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -83,9 +83,9 @@ class Registration extends HttpClient
         $this->payload["tld"] = $tld;
 
         $command = 'GetTLDDetails';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -121,9 +121,9 @@ class Registration extends HttpClient
         }
         
         $command = 'GetNameSuggestions';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
 
     /**
@@ -144,9 +144,9 @@ class Registration extends HttpClient
         $this->payload["tld"] = $tld;
 
         $command = 'GetExtAttributes';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
 
     /**
@@ -191,9 +191,9 @@ class Registration extends HttpClient
         $this->payload["numyears"] = (int) $numyears;
 
         $command = 'Purchase';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -206,9 +206,9 @@ class Registration extends HttpClient
         $this->payload["tld"] = $tld;
 
         $command = 'GetIDNCodes';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -224,9 +224,9 @@ class Registration extends HttpClient
         $this->payload["tld"] = $tld;
 
         $command = 'TM_Check';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -242,9 +242,9 @@ class Registration extends HttpClient
         $this->payload["lookupKey"] = $lookupKey;
 
         $command = 'TM_GetNotice';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -263,9 +263,9 @@ class Registration extends HttpClient
         $this->payload["EndUserIP"] = $ip;
 
         $command = 'DeleteRegistration';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -281,9 +281,9 @@ class Registration extends HttpClient
         $this->payload["language"] = $language;
 
         $command = 'GetAgreementPage';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -332,9 +332,9 @@ class Registration extends HttpClient
 
 
         $command = 'NameSpinner';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -360,9 +360,9 @@ class Registration extends HttpClient
         $this->payload["tld"] = $tld;
         $this->payload["Years"] = $years;
         $command = 'PE_GetResellerPrice';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -390,9 +390,9 @@ class Registration extends HttpClient
         $this->payload["tld"] = $tld;
         $this->payload["Years"] = $years;
         $command = 'PE_GetRetailPrice';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -408,9 +408,9 @@ class Registration extends HttpClient
         $this->payload["UseQtyEngine"] = $useQtyEngine;
         $this->payload["Years"] = $years;
         $command = 'PE_GetDomainPricing';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -421,9 +421,9 @@ class Registration extends HttpClient
     public function getTldList()
     {
         $command = 'GetTLDList';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -436,9 +436,9 @@ class Registration extends HttpClient
         $this->payload["sld"] = $sld;
         $this->payload["tld"] = $tld;
         $command = 'GetDomainExp';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
 
     /**
@@ -451,8 +451,8 @@ class Registration extends HttpClient
         $this->payload["sld"] = $sld;
         $this->payload["tld"] = $tld;
         $command = 'GetDomainInfo';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
 }
