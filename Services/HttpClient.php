@@ -86,4 +86,148 @@ class HttpClient
             throw new EnomException($xml->errors->Err1);
         }
     }
+    
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPayload()
+    {
+        return $this->payload;
+    }
+
+    /**
+     * @param array $payload
+     */
+    public function setPayload($payload)
+    {
+        $this->payload = $payload;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequest()
+    {
+        return $this->request;
+    }
+
+    /**
+     * @param mixed $request
+     */
+    public function setRequest($request)
+    {
+        $this->request = $request;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
+    /**
+     * @param mixed $response
+     */
+    public function setResponse($response)
+    {
+        $this->response = $response;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getXmlResponse()
+    {
+        return $this->xmlResponse;
+    }
+
+    /**
+     * @param mixed $xmlResponse
+     */
+    public function setXmlResponse($xmlResponse)
+    {
+        $this->xmlResponse = $xmlResponse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHttpCode()
+    {
+        return $this->httpCode;
+    }
+
+    /**
+     * @param mixed $httpCode
+     */
+    public function setHttpCode($httpCode)
+    {
+        $this->httpCode = $httpCode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurlInfo()
+    {
+        return $this->curlInfo;
+    }
+
+    /**
+     * @param mixed $curlInfo
+     */
+    public function setCurlInfo($curlInfo)
+    {
+        $this->curlInfo = $curlInfo;
+    }
 }
