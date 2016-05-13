@@ -30,9 +30,9 @@ class Account extends HttpClient
     public function getAccountInfo()
     {
         $command = 'GetAccountInfo';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
 
     /**
@@ -43,9 +43,9 @@ class Account extends HttpClient
     public function getServiceContact()
     {
         $command = 'GetServiceContact';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
 
     /**
@@ -71,9 +71,9 @@ class Account extends HttpClient
         }
 
         $command = 'GetOrderList';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -84,9 +84,9 @@ class Account extends HttpClient
     public function getBalance()
     {
         $command = 'GetBalance';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
     
     /**
@@ -97,8 +97,8 @@ class Account extends HttpClient
     public function getConfirmationSettings()
     {
         $command = 'GetConfirmationSettings';
-        $data = $this->makeRequest($command, $this->payload);
+        $this->makeRequest($command, $this->payload);
 
-        return $data;
+        return $this;
     }
 }
