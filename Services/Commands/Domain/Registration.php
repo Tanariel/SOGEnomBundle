@@ -156,7 +156,7 @@ class Registration extends HttpClient
      *
      * @return \SimpleXMLElement
      */
-    public function purchase($domain, $numyears = 1, $autorenew = false, array $nameservers = null, $unlock = false, $password = null )
+    public function purchase($domain, $numyears = 1, $autorenew = false, array $nameservers = null, $unlock = false, $password = null, $customerSuppliedPrice = null, $premiumDomain = false)
     {
         // Domain name
         $domain = trim($domain);
@@ -189,6 +189,15 @@ class Registration extends HttpClient
 
         // Number of Years to register for
         $this->payload["numyears"] = (int) $numyears;
+        
+        //If this is a premium domain, need to provide price and acknowledgement in purchase command
+        if (null !== $customerSuppliedPrice) {
+            $this->payload["CustomerSuppliedPrice"] = $customerSuppliedPrice;
+        }
+
+        if (false !== $premiumDomain) {
+            $this->payload["PremiumDomain"] = $customerSuppliedPrice;
+        }
 
         $command = 'Purchase';
         $this->makeRequest($command, $this->payload);
