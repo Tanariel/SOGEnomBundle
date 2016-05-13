@@ -25,6 +25,13 @@ class HttpClient
     protected $password;
 
     protected $payload = array();
+    
+    protected $request;
+    protected $response;
+    
+    protected $xmlResponse;
+    protected $httpCode;
+    protected $curlInfo;
 
     /**
      * Initializes Http client
@@ -58,6 +65,7 @@ class HttpClient
         $payload['responsetype']      = "XML";
 
         $url = $this->url . '/interface.asp?' . http_build_query($payload);
+        $this->request = $url;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -66,15 +74,16 @@ class HttpClient
         curl_setopt($ch, CURLOPT_HTTPGET, true);
 
         $result = curl_exec($ch);
+        $this->curlInfo = curl_getinfo($ch);
         curl_close($ch);
 
+        $this->httpCode = $this->curlInfo['http_code'];
+        $this->response = $result;
         $xml = simplexml_load_string($result);
+        $this->xmlResponse = $xml;
 
         if ((isset($xml->ErrCount)) && ((int) $xml->ErrCount > 0)) {
             throw new EnomException($xml->errors->Err1);
         }
-
-        return $xml;
     }
-
 }
