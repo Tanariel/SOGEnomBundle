@@ -416,7 +416,8 @@ class Registration extends HttpClient
     {
         $this->payload["UseQtyEngine"] = $useQtyEngine;
         $this->payload["Years"] = $years;
-        $command = 'PE_GetDomainPricing';
+        $this->payload["TLDOnly"] = 1;
+        $command = 'PE_GetRetailPricing';
         $this->makeRequest($command, $this->payload);
 
         return $this;
