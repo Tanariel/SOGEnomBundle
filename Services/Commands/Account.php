@@ -101,4 +101,17 @@ class Account extends HttpClient
 
         return $this;
     }
+    
+    /**
+     * Retrieve the list of domains for the account.
+     *
+     * @return \SimpleXMLElement
+     */
+    public function getAllDomains()
+    {
+        $command = 'GetAllDomains';
+        $this->makeRequest($command, $this->payload);
+
+        return $this;
+    }
 }
