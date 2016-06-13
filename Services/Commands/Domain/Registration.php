@@ -465,4 +465,18 @@ class Registration extends HttpClient
 
         return $this;
     }
+    
+     /**
+     * Get tld and sld from a single domain
+     *
+     * @return \SimpleXMLElement
+     */
+    public function getDomainSlDTLD($id)
+    {
+        $this->payload["DomainNameID"] = $id;
+        $command = 'GetDomainSLDTLD';
+        $this->makeRequest($command, $this->payload);
+
+        return $this;
+    }
 }
