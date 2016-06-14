@@ -114,4 +114,19 @@ class Account extends HttpClient
 
         return $this;
     }
+    
+    /**
+     * Get Suspended domains for registrant email confirmation.
+     *
+     * @return \SimpleXMLElement
+     */
+    public function getSuspendedDomains()
+    {
+        $this->payload["ReportType"] = "31";
+        $this->payload["Download"] = "False";
+        $command = 'RPT_GetReport';
+        $this->makeRequest($command, $this->payload);
+
+        return $this;
+    }
 }
