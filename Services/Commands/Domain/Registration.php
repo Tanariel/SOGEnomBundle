@@ -456,7 +456,7 @@ class Registration extends HttpClient
      *
      * @return \SimpleXMLElement
      */
-    public function getDomaininfo($sld, $tld)
+    public function getDomainInfo($sld, $tld)
     {
         $this->payload["sld"] = $sld;
         $this->payload["tld"] = $tld;
