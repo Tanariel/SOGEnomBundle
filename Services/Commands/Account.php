@@ -129,4 +129,19 @@ class Account extends HttpClient
 
         return $this;
     }
+    
+    /**
+     * Get Expiring domains.
+     *
+     * @return \SimpleXMLElement
+     */
+    public function getExpiringDomains()
+    {
+        $this->payload["ReportType"] = "6";
+        $this->payload["Download"] = "False";
+        $command = 'RPT_GetReport';
+        $this->makeRequest($command, $this->payload);
+
+        return $this;
+    }
 }
