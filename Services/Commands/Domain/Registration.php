@@ -89,6 +89,19 @@ class Registration extends HttpClient
     }
     
     /**
+     * Retrieve the settings for email confirmations of orders
+     *
+     * @return \SimpleXMLElement
+     */
+    public function getConfirmationSettings()
+    {
+        $command = 'GetConfirmationSettings';
+        $this->makeRequest($command, $this->payload);
+
+        return $this;
+    }
+    
+    /**
      * Generate variations of a domain name based on a search term.
      *
      * @param string $search Term to use to generate suggestions.
@@ -399,6 +412,37 @@ class Registration extends HttpClient
         $this->payload["tld"] = $tld;
         $this->payload["Years"] = $years;
         $command = 'PE_GetRetailPrice';
+        $this->makeRequest($command, $this->payload);
+
+        return $this;
+    }
+    
+    /**
+     * Get Retail Price for domains
+     * Permitted values are:
+     * 10 Domain registration
+     * 13 DNS hosting
+     * 14 DNS hosting renew
+     * 16 Domain renewal
+     * 17 Domain redemption grace period (RGP)
+     * 18 Domain Extended 63 RGP (available at our discretion, and decided by us on a name-by-name basis)
+     * 19 transfer
+     * 41 Registration and email for- warding by the .name Registry
+     * 44 .name registration and email forwarding renewal
+     *
+     * @param int [$productype] Product type
+     * @param string [$productype] tld
+     * @param int [$years] Retrieve quantity discount information. For some products like domains, this value represents the price break for multi-year registrations.
+     *
+     * @return \SimpleXMLElement Account Information
+     */
+    public function getPremiumPricing($productype = 10, $tld = 'com', $years = 1)
+    {
+        $this->payload["SLD1"] = 'biz';
+        $this->payload["TLD1"] = 'club';
+        //$this->payload["QName1"] = 'landrush';
+        $this->payload["ProductType"] = 'Register';
+        $command = 'PE_GetPremiumPricing';
         $this->makeRequest($command, $this->payload);
 
         return $this;
