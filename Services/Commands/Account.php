@@ -137,8 +137,12 @@ class Account extends HttpClient
      */
     public function getExpiringDomains()
     {
+        $today = new \DateTime();
+        $endDate = $today->add(new \DateInterval("P2M"));
+
         $this->payload["ReportType"] = "6";
         $this->payload["Download"] = "False";
+        $this->payload["enddate"] = $endDate->format("m/d/Y");
         $command = 'RPT_GetReport';
         $this->makeRequest($command, $this->payload);
 
